@@ -1,0 +1,148 @@
+body{
+  font-family: Arial, sans-serif;
+  margin: 0;
+  background: #f5f5f5;
+}
+
+.difference{
+  padding: 60px 8%;
+}
+
+.difference h1{
+  font-size: 42px;
+  margin-bottom: 40px;
+  color: #333;
+}
+
+.difference-container{
+  display: flex;
+  gap: 50px;
+  align-items: center;
+}
+
+.difference-image img{
+  width: 100%;
+  max-width: 600px;
+  border-radius: 12px;
+}
+
+.difference-content{
+  max-width: 500px;
+}
+
+.item{
+  margin-bottom: 35px;
+}
+
+.item h3{
+  font-size: 22px;
+  margin-bottom: 8px;
+  color: #222;
+}
+
+.item p{
+  color: #555;
+  line-height: 1.6;
+}
+
+
+.footer {
+    background: #000;
+    color: white;
+    padding: 60px 8%;
+}
+
+.footer-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 50px;
+}
+
+.footer-col h3,
+.footer-col h4 {
+    font-size: 28px;
+    margin-bottom: 20px;
+    color: white;
+}
+
+.footer-col p,
+.footer-col a {
+    color: #d1d5db;
+    text-decoration: none;
+    display: block;
+    margin-bottom: 14px;
+    line-height: 1.8;
+    font-size: 16px;
+}
+
+.footer-col a:hover {
+    color: #2563eb;
+}
+
+/* Social Icons */
+.footer-social {
+    display: flex;
+    gap: 12px;
+    margin-top: 25px;
+}
+
+.social-icon {
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    font-size: 16px;
+    color: white !important;
+    transition: 0.3s ease;
+}
+
+/* Background colors */
+.footer-social a:nth-child(1) {
+    background: #1f2937;
+}
+
+.footer-social a:nth-child(2) {
+    background: #1877F2;
+}
+
+.footer-social a:nth-child(3) {
+    background: linear-gradient(
+        45deg,
+        #f09433,
+        #e6683c,
+        #dc2743,
+        #cc2366,
+        #bc1888
+    );
+}
+
+.footer-social a:nth-child(4) {
+    background: #0077B5;
+}
+
+.footer-social a:nth-child(5) {
+    background: #FF0000;
+}
+
+.social-icon:hover {
+    transform: translateY(-4px);
+}
+
+/* Footer Bottom */
+.footer-bottom {
+    border-top: 1px solid rgba(255,255,255,0.15);
+    margin-top: 50px;
+    padding-top: 20px;
+    text-align: center;
+    color: #d1d5db;
+}
+
+/* Mobile Responsive */
+@media(max-width:768px){
+    .footer-container{
+        grid-template-columns: 1fr;
+    }
+}

@@ -1,0 +1,15 @@
+User-agent: *
+
+Disallow: /cart/
+Disallow: /checkout/
+Disallow: /thankyou/
+Disallow: /success/
+Disallow: /admin/
+Disallow: /api/
+Disallow: /login/
+Disallow: /register/
+Disallow: /*?*
+
+Allow: /
+
+Sitemap: https://mastercareservices.in/sitemap.xml

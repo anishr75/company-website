@@ -1,0 +1,295 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-PPWDCWKL');</script>
+<!-- End Google Tag Manager -->
+<meta charset="UTF-8">
+<title>Login / Signup</title>
+
+<style>
+
+body{
+font-family:'Segoe UI',sans-serif;
+background:linear-gradient(135deg,#e0e7ff,#f5f5f5);
+display:flex;
+justify-content:center;
+align-items:center;
+height:100vh;
+margin:0;
+}
+
+.box{
+background:rgba(255,255,255,0.9);
+backdrop-filter:blur(10px);
+padding:40px;
+border-radius:16px;
+width:380px;
+box-shadow:0 10px 30px rgba(0,0,0,0.1);
+transition:0.3s;
+}
+
+.box:hover{
+transform:translateY(-3px);
+box-shadow:0 15px 40px rgba(0,0,0,0.15);
+}
+
+h2{
+text-align:center;
+margin-bottom:25px;
+font-weight:600;
+}
+
+.form{
+display:flex;
+flex-direction:column;
+gap:15px;
+}
+
+input{
+padding:14px;
+border:1px solid #ddd;
+border-radius:10px;
+font-size:14px;
+transition:0.2s;
+width:100%;
+box-sizing:border-box;
+}
+
+
+input:focus{
+outline:none;
+border-color:#6366f1;
+box-shadow:0 0 0 2px rgba(99,102,241,0.15);
+}
+
+button{
+padding:14px;
+background:#111;
+color:white;
+border:none;
+border-radius:10px;
+font-size:15px;
+cursor:pointer;
+transition:0.3s;
+}
+
+button:hover{
+background:#333;
+transform:translateY(-1px);
+}
+
+.switch{
+text-align:center;
+margin-top:15px;
+font-size:14px;
+}
+
+.switch span{
+color:#6366f1;
+cursor:pointer;
+font-weight:500;
+}
+
+.switch span:hover{
+text-decoration:underline;
+}
+
+input[type="password"]::-ms-reveal,
+input[type="password"]::-ms-clear {
+display: none;
+}
+
+</style>
+
+</head>
+
+<body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PPWDCWKL"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+ 
+<div class="box">
+
+<div style="text-align:center;margin-bottom:15px;font-weight:bold;font-size:20px;">
+MASTERCARE
+</div>
+
+<h2 id="title">Login</h2>
+
+<div class="form" id="loginForm">
+
+<input type="email" placeholder="Email" id="loginEmail">
+
+<input type="password" placeholder="Password" id="loginPassword">
+
+<button onclick="loginUser()">Login</button>
+
+</div>
+<div class="form" id="signupForm" style="display:none">
+
+<input type="text" placeholder="Full Name" id="name">
+
+<input type="email" placeholder="Email" id="email">
+
+<div style="position:relative;width:100%;">
+
+<input type="password" placeholder="Password" id="password" style="width:100%;">
+
+<span onclick="togglePassword('password')" 
+style="position:absolute;right:12px;top:50%;transform:translateY(-50%);cursor:pointer;">
+👁
+</span>
+
+</div>
+
+<div style="position:relative;width:100%;">
+
+<input type="password" placeholder="Confirm Password" id="confirmPassword" style="width:100%;">
+
+<span onclick="togglePassword('confirmPassword')" 
+style="position:absolute;right:12px;top:50%;transform:translateY(-50%);cursor:pointer;">
+👁
+</span>
+
+</div>
+
+<button onclick="signupUser()">Create Account</button>
+
+</div>
+
+<div class="switch">
+<span id="toggleText" onclick="toggleForm()">Don't have an account? Sign Up</span>
+</div>
+
+</div>
+
+<script>
+
+function toggleForm(){
+
+let login = document.getElementById("loginForm");
+let signup = document.getElementById("signupForm");
+let title = document.getElementById("title");
+let toggleText = document.getElementById("toggleText");
+
+if(login.style.display === "none"){
+
+login.style.display="flex";
+signup.style.display="none";
+title.innerText="Login";
+toggleText.innerText="Don't have an account? Sign Up";
+
+}else{
+
+login.style.display="none";
+signup.style.display="flex";
+title.innerText="Create Account";
+toggleText.innerText="Already have an account? Login";
+
+}
+
+}
+
+
+// LOGIN FUNCTION
+function loginUser(){
+
+let email = document.getElementById("loginEmail").value;
+let password = document.getElementById("loginPassword").value;
+
+fetch("/login",{
+
+method:"POST",
+headers:{
+"Content-Type":"application/json"
+},
+
+body:JSON.stringify({email,password})
+
+})
+.then(res=>res.json())
+.then(data=>{
+
+if(data.success){
+
+localStorage.setItem("userLogged","true");
+localStorage.setItem("userEmail",email);
+
+window.location.href="checkout.html";
+
+}else{
+
+alert("Invalid login details");
+
+}
+
+});
+
+}
+
+function signupUser(){
+
+let name = document.getElementById("name").value;
+let email = document.getElementById("email").value;
+let password = document.getElementById("password").value;
+let confirmPassword = document.getElementById("confirmPassword").value;
+
+if(password !== confirmPassword){
+
+alert("Passwords do not match");
+return;
+
+}
+
+fetch("/signup",{
+
+method:"POST",
+headers:{
+"Content-Type":"application/json"
+},
+
+body:JSON.stringify({name,email,password})
+
+})
+.then(res=>res.json())
+.then(data=>{
+
+if(data.success){
+
+alert("Account created. Please login.");
+toggleForm();
+
+}else{
+
+alert("Signup failed");
+
+}
+
+});
+
+}
+
+function togglePassword(id){
+
+let input = document.getElementById(id);
+
+if(input.type === "password"){
+input.type = "text";
+}else{
+input.type = "password";
+}
+
+}
+
+</script>
+
+</body>
+</html>
+

@@ -1,0 +1,655 @@
+<!DOCTYPE html>
+<html>
+<head>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-PPWDCWKL');</script>
+<!-- End Google Tag Manager -->
+
+<meta charset="UTF-8">
+<meta name="robots" content="noindex, nofollow">
+<title>Checkout</title>
+
+<style>
+
+body{
+font-family:Arial;
+background:#f5f5f5;
+margin:0;
+}
+
+
+
+
+.box:last-child{
+position:sticky;
+top:40px;
+}
+
+.item{
+display:flex;
+justify-content:space-between;
+margin-bottom:10px;
+}
+
+.summary{
+margin-top:25px;
+border-top:1px dashed #ddd;
+padding-top:20px;
+}
+
+.checkout-grid{
+display:grid;
+grid-template-columns:1.4fr 1fr;
+gap:40px;
+align-items:start;
+}
+
+
+.checkout-grid .box:last-child{
+min-width:420px;
+position:sticky;
+top:40px;
+}
+
+.checkout-grid .box:first-child{
+max-width:700px;
+}
+
+.checkout-form{
+background:#fbfbfb;
+padding:20px;
+border-radius:12px;
+border:1px solid #eee;
+}
+
+.checkout-form input,
+.checkout-form textarea{
+padding:14px 16px;
+border:1px solid #e2e2e2;
+border-radius:10px;
+font-size:14px;
+width:100%;
+box-sizing:border-box;
+background:#fafafa;
+transition:all .25s ease;
+}
+
+/* hover effect */
+.checkout-form input:hover,
+.checkout-form textarea:hover{
+border-color:#999;
+background:white;
+}
+
+/* focus effect */
+.checkout-form input:focus,
+.checkout-form textarea:focus{
+outline:none;
+border-color:#000;
+background:white;
+box-shadow:0 0 0 3px rgba(0,0,0,0.08);
+}
+
+.checkout-form input::placeholder,
+.checkout-form textarea::placeholder{
+color:#999;
+font-size:13px;
+}
+
+.checkout-form textarea{
+height:90px;
+resize:none;
+}
+
+.container{
+max-width:1200px;
+margin:60px auto;
+padding:0 20px;
+}
+.box{
+background:#fff;
+padding:30px;
+border-radius:14px;
+box-shadow:0 5px 20px rgba(0,0,0,0.05);
+width:100%;
+box-sizing:border-box;
+}
+
+
+
+@media(max-width:900px){
+
+.checkout-grid{
+grid-template-columns:1fr;
+}
+
+}
+
+.checkout-form{
+display:flex;
+flex-direction:column;
+gap:15px;
+}
+
+.checkout-form input,
+.checkout-form textarea{
+padding:14px;
+border:1px solid #ddd;
+border-radius:8px;
+font-size:14px;
+}
+
+.checkout-form textarea{
+height:90px;
+resize:none;
+}
+
+.item{
+display:flex;
+justify-content:space-between;
+margin-bottom:10px;
+}
+
+
+
+.total{
+font-size:18px;
+margin-top:10px;
+}
+
+.phone-group{
+display:flex;
+align-items:center;
+border:1px solid #ddd;
+border-radius:10px;
+overflow:hidden;
+background:#fafafa;
+}
+
+.country-code{
+padding:14px 12px;
+background:#f0f0f0;
+font-weight:600;
+color:#333;
+border-right:1px solid #ddd;
+}
+
+.phone-group input{
+border:none;
+outline:none;
+flex:1;
+padding:14px;
+font-size:14px;
+background:transparent;
+}
+
+.pay-btn{
+margin-top:25px;
+width:100%;
+padding:16px;
+background:linear-gradient(135deg,#000,#333);
+color:white;
+border:none;
+border-radius:12px;
+font-size:16px;
+font-weight:600;
+cursor:pointer;
+transition:.3s;
+}
+
+.pay-btn:hover{
+background:#222;
+transform:translateY(-2px);
+}
+
+.row input{
+flex:1;
+}
+
+.empty{
+color:red;
+margin-top:10px;
+}
+
+.row{
+display:flex;
+gap:15px;
+}
+
+.box h2{
+margin-top:0;
+font-size:22px;
+letter-spacing:.5px;
+margin-bottom:20px;
+}
+
+.checkout-form input:focus,
+.checkout-form textarea:focus{
+outline:none;
+border-color:#000;
+}
+
+</style>
+
+</head>
+
+<body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PPWDCWKL"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+<div class="container">
+
+<div class="checkout-grid">
+
+<!-- LEFT SIDE -->
+<div class="box">
+
+<h2>Shipping Details</h2>
+<div class="checkout-form">
+
+<input type="text" placeholder="Full Name" id="name">
+
+<input type="email" placeholder="Email Address" id="email">
+
+<div class="phone-group">
+
+<span class="country-code">🇮🇳 +91</span>
+<input type="tel" placeholder="Phone Number" id="phone" maxlength="10">
+
+</div>
+
+<input type="text" placeholder="Address Line 1" id="address">
+
+<input type="text" placeholder="Address Line 2 (optional)" id="address2">
+<input type="text" placeholder="Landmark" id="landmark">
+<div class="row">
+<input type="text" placeholder="City" id="city">
+<input type="text" placeholder="PIN Code" id="pin">
+</div>
+
+</div>
+</div>
+
+
+<!-- RIGHT SIDE -->
+<div class="box">
+
+<h2>Order Summary</h2>
+
+<div id="items"></div>
+
+<div class="summary">
+
+<div class="item">
+<span>Subtotal</span>
+<span id="subtotal">₹0</span>
+</div>
+
+<div class="item">
+<span>Delivery</span>
+<span style="color:green">FREE</span>
+</div>
+
+<div class="item total">
+<strong>Total</strong>
+<strong>₹<span id="total">0</span></strong>
+</div>
+
+</div>
+
+<button class="pay-btn" id="payBtn">
+🔒 Place Order — ₹<span id="payAmount">0</span>
+</button>
+
+<div id="emptyMsg" class="empty"></div>
+
+</div>
+
+</div>
+
+</div>
+
+<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+
+<script>
+
+if(!localStorage.getItem("userLogged")){
+window.location.href="login.html";
+}
+
+let itemsDiv =
+document.getElementById("items");
+
+let subtotal = 0;
+let finalTotal = 0;
+let cart = [];
+
+let userEmail =
+localStorage.getItem("userEmail");
+
+fetch("/api/cart/" + userEmail)
+
+.then(res=>res.json())
+
+.then(data=>{
+
+cart = data.cart || [];
+
+itemsDiv.innerHTML = "";
+
+if(cart.length === 0){
+
+document.getElementById("emptyMsg")
+.innerText = "Your cart is empty.";
+
+document.getElementById("payBtn")
+.disabled = true;
+
+return;
+}
+
+cart.forEach(item=>{
+
+let itemTotal =
+item.price * item.quantity;
+
+subtotal += itemTotal;
+
+let div =
+document.createElement("div");
+
+div.className = "item";
+
+div.innerHTML = `
+<span>
+${item.name} (x${item.quantity})
+</span>
+
+<span>
+₹${itemTotal}
+</span>
+`;
+
+itemsDiv.appendChild(div);
+
+});
+
+finalTotal = subtotal;
+
+document.getElementById("subtotal")
+.innerText = "₹" + subtotal;
+
+document.getElementById("total")
+.innerText = finalTotal;
+
+document.getElementById("payAmount")
+.innerText = finalTotal;
+
+});
+
+
+// PAYMENT BUTTON CLICK
+document.getElementById("payBtn").onclick = function(){
+
+let name =
+document.getElementById("name").value.trim();
+
+let email =
+document.getElementById("email").value.trim();
+
+let phone =
+document.getElementById("phone").value.trim();
+
+let address =
+document.getElementById("address").value.trim();
+
+let address2 =
+document.getElementById("address2").value.trim();
+
+let landmark =
+document.getElementById("landmark").value.trim();
+
+let city =
+document.getElementById("city").value.trim();
+
+let pin =
+document.getElementById("pin").value.trim();
+
+if(!name || !email || !phone || !address || !city || !pin){
+
+alert("Please fill all shipping details.");
+return;
+
+}
+
+if(phone.length !== 10){
+
+alert("Enter valid 10 digit phone number.");
+return;
+
+}
+
+if(pin.length !== 6){
+
+alert("Enter valid PIN code.");
+return;
+
+}
+
+userEmail =
+localStorage.getItem("userEmail");
+
+// SAVE ADDRESS
+fetch("/save-address",{
+
+method:"POST",
+
+headers:{
+"Content-Type":"application/json"
+},
+
+body:JSON.stringify({
+
+email:userEmail,
+name:name,
+phone:phone,
+address:address,
+address2:address2,
+landmark:landmark,
+city:city,
+pin:pin
+
+})
+
+})
+
+.then(res=>res.json())
+
+.then(savedData=>{
+
+console.log(
+"Address saved:",
+savedData
+);
+
+// GET RAZORPAY KEY
+return fetch("/razorpay-key");
+
+})
+
+.then(res=>res.json())
+
+.then(keyData=>{
+
+// CREATE ORDER
+return fetch("/create-order",{
+
+method:"POST",
+
+headers:{
+"Content-Type":"application/json"
+},
+
+body:JSON.stringify({
+amount: finalTotal
+})
+
+})
+
+.then(res=>res.json())
+
+.then(order=>({
+
+order,
+key:keyData.key
+}));
+
+})
+
+.then(({order,key})=>{
+
+var options = {
+
+key: key,
+
+amount: order.amount,
+
+currency: order.currency,
+
+order_id: order.id,
+
+name: "Mastercare Services",
+
+description: "Order Payment",
+
+prefill: {
+name: name,
+email: email,
+contact: phone
+},
+
+notes: {
+address:
+address + ", " +
+city + " - " + pin
+},
+
+theme: {
+color: "#000"
+},
+
+handler: function(response){
+
+fetch("/place-order",{
+
+method:"POST",
+
+headers:{
+"Content-Type":
+"application/json"
+},
+
+body:JSON.stringify({
+
+email:userEmail,
+
+paymentId:
+response
+.razorpay_payment_id,
+
+amount: finalTotal
+
+})
+
+})
+
+.then(res=>res.json())
+
+.then(data=>{
+
+if(data.success){
+
+alert(
+"Payment Successful!"
+);
+
+window.location.href =
+"success.html";
+
+}else{
+
+alert(
+"Order save failed"
+);
+
+}
+
+});
+
+}
+
+};
+
+var rzp =
+new Razorpay(options);
+
+rzp.open();
+
+})
+
+.catch(err=>{
+
+console.log(
+"RAZORPAY ERROR:",
+err
+);
+
+alert(
+"Payment Failed"
+);
+
+});
+
+};
+
+
+// GET SAVED ADDRESS
+fetch("/get-address/" + userEmail)
+
+.then(res=>res.json())
+
+.then(data=>{
+
+if(data.success &&
+data.address){
+
+document.getElementById("name").value =
+data.address.title || "";
+
+document.getElementById("phone").value =
+data.address.phone_number || "";
+
+document.getElementById("address").value =
+data.address.address_line_1 || "";
+
+document.getElementById("city").value =
+data.address.city || "";
+
+document.getElementById("pin").value =
+data.address.postal_code || "";
+
+document.getElementById("email").value =
+userEmail || "";
+
+}
+
+});
+
+</script>
+</body>
+</html>
